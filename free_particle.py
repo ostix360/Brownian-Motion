@@ -5,7 +5,7 @@ from typing import Callable
 def f(x: ndarray) -> ndarray:
     return np.zeros_like(x)
 
-def diff_equation(dt, x: ndarray, D: float, gamma: float, f: Callable) -> ndarray:
+def langevin_overdamped(dt, x: ndarray, D: float, gamma: float, f: Callable) -> ndarray:
     """
     Free particle Brownian motion equation resolution.
     dx = f(x)/gamma dt + sqrt(2D dt) * R
@@ -22,6 +22,6 @@ def euler_maruyama(D: float, gamma: float, time: float = 100, dt: float=0.1, x0:
     x = np.zeros((steps, x0.shape[0]))
     x[0] = x0
     for i in range(1, steps):
-        x[i] = x[i - 1] + diff_equation(dt, x[i - 1], D, gamma, f)
+        x[i] = x[i - 1] + langevin_overdamped(dt, x[i - 1], D, gamma, f)
     return x
 
