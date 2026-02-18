@@ -16,11 +16,9 @@ b. Double well potential
 - link to boltzmann distribution
 4. Convergence time
 
-
 5. Take only the time of jumping instead of all its positions to find the argmax
 
 6. Compare the results with Einstein relation and and verify Arrhenius law 
-
 
 7. Plot speeds and compare it to the Maxwell-Boltzmann distribution
 
