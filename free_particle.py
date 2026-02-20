@@ -35,13 +35,13 @@ def euler_maruyama_spring(D: float, gamma: float, time: float = 100, dt: float=0
     x[0,:, 0] = x0
     x[0,:, 1] = x1
     for i in range(1, steps):
-        dist = x[i,:,1] - x[i, :, 0]
+        dist = x[i-1,:,1] - x[i-1, :, 0]
         if dist > 0:
-            dist = x[i,:,1] - x[i, :, 0]
-            x[i, :, 0] = x[i - 1, :, 0] + langevin_overdamped(dt, x[i - 1, :, 0], D, gamma, f) - k * (dist - l0) * dt
-            x[i, :, 1] = x[i - 1, :, 1] + langevin_overdamped(dt, x[i - 1, :, 1], D, gamma, f) + k * (dist - l0) * dt
+            dist = x[i-1,:,1] - x[i-1, :, 0]
+            x[i, :, 0] = x[i - 1, :, 0] + langevin_overdamped(dt, x[i - 1, :, 0], D, gamma, f) + k * (dist - l0) * dt
+            x[i, :, 1] = x[i - 1, :, 1] + langevin_overdamped(dt, x[i - 1, :, 1], D, gamma, f) - k * (dist - l0) * dt
         else:
-            dist = x[i,:,0] - x[i, :, 1]
-            x[i, :, 0] = x[i - 1, :, 0] + k * (dist - l0) * dt + langevin_overdamped(dt, x[i - 1, :, 0], D, gamma, f)
-            x[i, :, 1] = x[i - 1, :, 1] - k * (dist - l0) * dt + langevin_overdamped(dt, x[i - 1, :, 1], D, gamma, f)
+            dist = x[i-1,:,0] - x[i-1, :, 1]
+            x[i, :, 0] = x[i - 1, :, 0] - k * (dist - l0) * dt + langevin_overdamped(dt, x[i - 1, :, 0], D, gamma, f)
+            x[i, :, 1] = x[i - 1, :, 1] + k * (dist - l0) * dt + langevin_overdamped(dt, x[i - 1, :, 1], D, gamma, f)
     return x
