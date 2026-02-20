@@ -22,6 +22,6 @@ b. Double well potential
 
 7. Plot speeds and compare it to the Maxwell-Boltzmann distribution
 
-8. Take a colored noise instead of a white noise and compare it to the intertia equation
+8. Take a colored noise instead of a white noise and compare it to the inertia equation
 
 9. Add 2 links between 2 particles (spring)
