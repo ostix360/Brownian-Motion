@@ -16,7 +16,7 @@ def langevin_overdamped(dt, x: ndarray, v: ndarray, D: float, gamma: float, f: C
 
 def euler_maruyama(D: float, gamma: float,  time: float = 100, dt: float=0.1, m: float = 1, x0: ndarray=np.zeros((1,)), v0: ndarray=np.zeros((1,)), f: Callable = f) -> Tuple[ndarray, ndarray]:
     """
-    Resolve the Brownian motion equation for a free particle over a given time.
+    Resolve the Brownian motion equation for an inertia particle over a given time.
     """
     if x0.shape != v0.shape:
         print("WARNING: v0 and x0 have different shapes, using v0 = 0 by default")
